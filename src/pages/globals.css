@@ -1,0 +1,332 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&family=Poppins&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  html,
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+}
+html {
+  --scrollbar-bg: #585656;
+  --scrollbar-thumb-bg: #837d7d;
+  --scrollbar-thumb-hover-bg: #2e2c2c;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+html {
+  user-select: none;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-bg);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-bg) var(--scrollbar-bg);
+}
+
+.jersey-10-regular {
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.divider-primary:before,
+.divider-primary:after {
+  background-color: rgb(204, 199, 199);
+  opacity: 1;
+}
+.divider-vertical:before,
+.divider-vertical:after {
+  background-color: rgb(152, 147, 147);
+}
+.custom-height {
+  height: 564px;
+  position: relative;
+}
+:root {
+  --text-color-light: black;
+  --text-color-dark: rgb(210, 210, 210);
+  --text-shadow-light: none;
+  --text-shadow-dark: 0 0 2px #ffffff, 0 0 2px #ecf2ec, 0 0 5px #ffffff,
+    0 0 10px #ffffff;
+}
+
+.gaming-effect {
+  color: var(--text-color-light);
+  text-shadow: var(--text-shadow-light);
+  animation: flicker 1.5s infinite alternate;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color-light: var(--text-color-dark);
+    --text-shadow-light: var(--text-shadow-dark);
+  }
+}
+.parent-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
+  gap: 16px;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1280px) {
+  .parent-grid {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .parent-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .parent-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.drawer {
+  background-color: transparent;
+  max-width: 30rem;
+}
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  70% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.9;
+  }
+}
+
+.custom-bg {
+  background-color: var(--black);
+  background-image: radial-gradient(
+    circle farthest-side at 0 -2%,
+    rgba(132, 101, 255, 0.2),
+    transparent 15%
+  );
+  border: 1px solid rgba(191, 191, 191, 0.2);
+  border-radius: 1.5rem;
+}
+.custom-bg-2 {
+  border: 1px solid rgba(191, 191, 191, 0.2);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .custom-bg-2 {
+    background-color: rgba(0, 0, 0, 0.5);
+    background-image: radial-gradient(
+      circle farthest-side at 0 -2%,
+      rgba(132, 101, 255, 0.2),
+      transparent 15%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #ffffff;
+  }
+}
+@media (prefers-color-scheme: light) {
+  .custom-bg-2 {
+    background-color: var(--black);
+    background-image: radial-gradient(
+      circle farthest-side at 0 -2%,
+      rgba(132, 101, 255, 0.2),
+      transparent 15%
+    );
+    border: 1px solid rgba(191, 191, 191, 0.2);
+    border-radius: 1.5rem;
+  }
+}
+
+.custom-bg-hero {
+  background-color: var(--black);
+  background-image: radial-gradient(
+    circle farthest-side at 0 -2%,
+    rgba(132, 101, 255, 0.2),
+    transparent 15%
+  );
+}
+.blurry-bg {
+  background: linear-gradient(114.36deg, #244a84 7.56%, #19074b 105.81%);
+  border: 1px solid rgba(191, 191, 191, 0.2);
+  border-radius: 1.25rem;
+}
+.full-width {
+  width: 100vw;
+}
+
+@media screen and (max-width: 768px) {
+  .center-item {
+    align-items: center;
+  }
+  .centerd-form {
+    align-items: center;
+    justify-content: center;
+  }
+  .hidden {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .dropdown-menu {
+    width: 100%;
+    max-width: 300px;
+    right: 0;
+    left: 0;
+    top: 100%;
+    margin-top: 8px;
+    border-radius: 8px;
+  }
+
+  .dropdown-menu a {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .hiden {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hiden-btn {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .hide-stepper {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  .show-stepper {
+    display: flex;
+  }
+}
+@keyframes sprinkle {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.animate-sprinkles::before,
+.animate-sprinkles::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://lottie.host/embed/88f0600f-051b-4141-8850-0305b47b2703/GvpgTmEoAI.json"); /* replace with your sprinkle image */
+  background-size: 50px;
+  background-repeat: repeat;
+  animation: sprinkle 4s linear infinite;
+  opacity: 0.7;
+}
+
+.animate-sprinkles::after {
+  animation-delay: 2s;
+}
+
+.card {
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  backdrop-filter: blur(12px);
+  background-color: rgba(36, 35, 104, 0.5);
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.loader {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.6s ease-out;
+}
+.google-pay-button {
+  width: 100%;
+  height: 50px;
+  background-color: #5f6368;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-pay-button:hover {
+  background-color: #3c4043;
+}
+
+.main-wrapper {
+  background-color: var(--dark-bg);
+}
