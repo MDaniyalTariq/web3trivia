@@ -3,20 +3,19 @@ import { ThirdwebProvider, embeddedWallet, smartWallet } from "@thirdweb-dev/rea
 import { BinanceTestnet } from "@thirdweb-dev/chains";
 import "./globals.css";
 import { ThemeProvider } from 'next-themes';
-import ClientLayout from './ClientLayout'; // Ensure this path is correct
+import ClientLayout from './ClientLayout';
 import PrelineScript from '@/components/PrelineScript';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Head from 'next/head';
+import Script from 'next/script';
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import Joyride from 'react-joyride';
 
-
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
-
 
     const [isClient, setIsClient] = useState(false);
 
@@ -31,7 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
                 <link rel="shortcut icon" href="/favicon.ico" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-                <meta name="apple-mobile-web-app-title" content="Web3trivia " />
+                <meta name="apple-mobile-web-app-title" content="Web3trivia" />
                 <link rel="manifest" href="/site.webmanifest" />
 
                 <link rel="icon" href="/logo.png" sizes="any" />
@@ -49,6 +48,11 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <meta name="twitter:description" content="Play trivia games, learn, and earn crypto rewards!" />
                 <meta name="twitter:image" content="/logo.png" />
             </Head>
+
+            {/* Translation Scripts with Next.js Script Component */}
+            <Script src="/assets/lang-config.js" strategy="beforeInteractive" />
+            <Script src="/assets/translation.js" strategy="beforeInteractive" />
+            <Script src="//translate.google.com/translate_a/element.js?cb=TranslateInit" strategy="afterInteractive" />
 
             <ThirdwebProvider
                 clientId={process.env.NEXT_PUBLIC_clientID}
@@ -72,10 +76,8 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <ThemeProvider attribute="class" defaultTheme="system">
                     <QueryClientProvider client={queryClient}>
                         <ClientLayout>
-                            {isClient && (
-                                <Component {...pageProps} />
-                            )}
-
+                            <div id="google_translate_element"></div>
+                            {isClient && <Component {...pageProps} />}
                             <Analytics />
                             <SpeedInsights />
                         </ClientLayout>
@@ -84,7 +86,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             </ThirdwebProvider>
 
             <PrelineScript />
-            <script async src="https://pay.google.com/gp/p/js/pay.js"></script>
+            <Script src="https://pay.google.com/gp/p/js/pay.js" strategy="lazyOnload" />
         </>
     );
 }

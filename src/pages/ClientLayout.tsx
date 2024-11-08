@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import NavBar from '@/components/NavBar';
 import Example from '@/components/Banner';
 import Popover from '../components/Popover';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -15,7 +16,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   const [isLoading, setIsLoading] = useState(true); // State for managing loading status
 
 
- useEffect(() => {
+  useEffect(() => {
     const isProtectedRoute = pathname.startsWith('/dashboard') && pathname !== '/dashboard/pricing';
     if (isProtectedRoute && !wallet) {
       setShowLoginMessage(true);
@@ -51,7 +52,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <>
       {!isDashboardPage && <NavBar />}
+
       {children}
+      <LanguageSwitcher />
       {!isDashboardPage && <Example />}
       {!isDashboardPage && isLoading && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">

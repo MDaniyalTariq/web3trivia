@@ -6,6 +6,7 @@
   html,
   body {
     font-family: "Poppins", sans-serif;
+    top: 0 !important;
   }
 }
 html {
@@ -13,7 +14,9 @@ html {
   --scrollbar-thumb-bg: #837d7d;
   --scrollbar-thumb-hover-bg: #2e2c2c;
 }
-
+.skiptranslate {
+  display: none !important;
+}
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
